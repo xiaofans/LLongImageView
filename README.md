@@ -7,7 +7,7 @@ why
 ==============
 
 User's phone have different size of photos include the long image. but the android ImageView can't display it. eg the 4096 px height or width.but the most popular app like WeChat,Sina weibo can display well. I spend too much time and finally make it happen.
-Special thanks to the great project https://github.com/davemorrissey/subsampling-scale-image-view.this project was based on it.
+Special thanks to the great project https://github.com/davemorrissey/subsampling-scale-image-view  this project was based on it.
 
 
 how
