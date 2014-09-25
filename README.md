@@ -26,4 +26,4 @@ call setFitScreen(true).
 
 TODO
 ==============
-make below api level 10 works
+make below api level 10 work
