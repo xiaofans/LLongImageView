@@ -1081,11 +1081,17 @@ public class SubsamplingScaleImageView extends View {
                                 }
                                 break;
                             case URL:
-                                InputStream is = getUrlResponse(source);
-                                if(is != null){
-                                    decoder = BitmapRegionDecoder.newInstance(is, true);
-                                }else{
-                                    throw  new IllegalArgumentException("the request image url can not attach!");
+                               InputStream inputStream =  CacheManager.getInstance(context).get(source.hashCode()+"");
+                                if(inputStream == null){
+                                    InputStream is = getUrlResponse(source);
+                                    if(is != null){
+                                       InputStream savedIs =  CacheManager.getInstance(context).saveCache(source.hashCode()+"",is);
+                                        decoder = BitmapRegionDecoder.newInstance(savedIs, true);
+                                    }else{
+                                        throw  new IllegalArgumentException("the request image url can not attach!");
+                                    }
+                                }else {
+                                    decoder = BitmapRegionDecoder.newInstance(inputStream, true);
                                 }
                                 break;
                         }
