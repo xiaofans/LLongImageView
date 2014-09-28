@@ -20,7 +20,7 @@ I copy the based on project and add a few sample features.
 
 3.add cache support
 
-so you can use it to display a image via assets folder storage or url.
+so you can use it to display a image via assets, folder storage or url.
 just call setImageAsset(String name),setImageFile(String path),setImageUrl(String url,LLongImageLoadingListener longLoadingListener)
 if you want fit screen.
 call setFitScreen(true) before start loading.
