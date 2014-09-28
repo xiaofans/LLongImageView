@@ -25,6 +25,10 @@ just call setImageAsset(String name),setImageFile(String path),setImageUrl(Strin
 if you want fit screen.
 call setFitScreen(true) before start loading.
 
+demo
+==============
+https://github.com/xiaofans/LLongImageView/blob/master/demo.gif
+
 
 TODO
 ==============
