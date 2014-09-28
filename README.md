@@ -12,7 +12,7 @@ Special thanks to the great project https://github.com/davemorrissey/subsampling
 
 how
 ==============
-I copy the based on project and add two sample features.
+I copy the based on project and add a few sample features.
 
 1.Support remote url display
 
