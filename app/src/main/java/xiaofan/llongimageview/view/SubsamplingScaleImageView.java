@@ -197,6 +197,14 @@ public class SubsamplingScaleImageView extends View {
     // is fit screen
     private boolean isFitScreen;
 
+    public interface LLongImageLoadingListener{
+        void loadingStart();
+        void loadingComplete();
+        void loadingFailed();
+    }
+    private LLongImageLoadingListener longImageLoadingListener;
+
+
     public SubsamplingScaleImageView(Context context, AttributeSet attr) {
         super(context, attr);
         setMinimumDpi(160);
@@ -290,7 +298,8 @@ public class SubsamplingScaleImageView extends View {
      * @param url  the image url.
      * @param state State to be restored. Nullable.
      */
-    public final void setImageUrl(String url, ImageViewState state) {
+    public final void setImageUrl(String url, ImageViewState state,LLongImageLoadingListener listener) {
+        this.longImageLoadingListener = listener;
         reset(true);
         restoreState(state);
         BitmapInitTask task = new BitmapInitTask(this, getContext(), url, BitmapInitTask.SourceType.URL);
@@ -302,8 +311,8 @@ public class SubsamplingScaleImageView extends View {
      * Display an image from a url.
      * @param url
      */
-    public final void setImageUrl(String url) {
-        setImageUrl(url, null);
+    public final void setImageUrl(String url,LLongImageLoadingListener listener) {
+        setImageUrl(url, null,listener);
     }
 
     /**
