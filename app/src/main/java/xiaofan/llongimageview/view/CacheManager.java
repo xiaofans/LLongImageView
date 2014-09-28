@@ -50,10 +50,11 @@ public class CacheManager {
             if(editor == null) return inputStream;
             ops = editor.newOutputStream(0);
             ByteArrayOutputStream os=new ByteArrayOutputStream();
+            byte[] buffer = new byte[4 * 1024];
             int numread;
-            while ((numread = inputStream.read()) != -1){
-                os.write( numread);
-                ops.write(numread);
+            while ((numread = inputStream.read(buffer)) != -1){
+                os.write(buffer,0,numread);
+                ops.write(buffer,0,numread);
             }
             InputStream is2 = new ByteArrayInputStream(os.toByteArray());
             editor.commit();

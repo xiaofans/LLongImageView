@@ -204,6 +204,9 @@ public class SubsamplingScaleImageView extends View {
     }
     private LLongImageLoadingListener longImageLoadingListener;
 
+    public LLongImageLoadingListener getLongImageLoadingListener() {
+        return longImageLoadingListener;
+    }
 
     public SubsamplingScaleImageView(Context context, AttributeSet attr) {
         super(context, attr);
@@ -1057,6 +1060,17 @@ public class SubsamplingScaleImageView extends View {
             this.sourceType = sourceType;
         }
 
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            if(viewRef != null){
+                final SubsamplingScaleImageView subsamplingScaleImageView = viewRef.get();
+                if(subsamplingScaleImageView.getLongImageLoadingListener() != null){
+                    subsamplingScaleImageView.getLongImageLoadingListener().loadingStart();
+                }
+            }
+        }
+
         @TargetApi(Build.VERSION_CODES.GINGERBREAD_MR1)
         @Override
         protected int[] doInBackground(Void... params) {
@@ -1132,8 +1146,12 @@ public class SubsamplingScaleImageView extends View {
                 final SubsamplingScaleImageView subsamplingScaleImageView = viewRef.get();
                 if (subsamplingScaleImageView != null && decoder != null && xyo != null && xyo.length == 3) {
                     subsamplingScaleImageView.onImageInited(decoder, xyo[0], xyo[1], xyo[2]);
+                    if(subsamplingScaleImageView.getLongImageLoadingListener() != null){
+                        subsamplingScaleImageView.getLongImageLoadingListener().loadingComplete();
+                    }
+                }else{
+                    subsamplingScaleImageView.getLongImageLoadingListener().loadingFailed();
                 }
-
             }
         }
     }
