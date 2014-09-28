@@ -27,7 +27,7 @@ call setFitScreen(true) before start loading.
 
 demo
 ==============
-https://github.com/xiaofans/LLongImageView/blob/master/demo.gif
+ ![image](https://github.com/xiaofans/LLongImageView/blob/master/demo.gif)
 
 
 TODO
